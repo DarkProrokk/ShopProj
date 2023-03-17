@@ -1,0 +1,21 @@
+{% extends 'Catalog/base.html' %}
+{% block title %} Каталог {% endblock %}
+
+{% block content %}
+<ol>
+{% for prod in all_prod %}
+    <li>Название - {{prod.name}}</li>
+    <li>Марка - {{prod.mark}}</li>
+    <li>Цена - {{prod.price}} Количество - {{prod.count}}</li>
+    <li>Марка - {{prod.mark.name}}</li>
+    <ul> Категория
+        {% for cat in prod.category.all %}
+        <li>{{cat}}</li>
+        {% endfor %}
+    </ul>
+    <li><a href="{% url 'detail' prod.id %}"> Информация о товаре</a></li>
+    <hr>
+{% endfor %}
+</ol>
+
+{% endblock %}

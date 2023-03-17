@@ -1,0 +1,8 @@
+{% extends 'Catalog/base.html' %}
+{% block title %} О продукте {% endblock %}
+
+{% block content %}
+<h2> Название - {{product.name}}</h2>
+<h2> Марка - {{product.mark.name}}</h2>
+<h2> Описание -  {{product.description}}</h2>
+{% endblock %}
