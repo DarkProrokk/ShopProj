@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.views.generic import ListView, DetailView
 
-from .models import Product
+from .models import Product, Category
 
 
 # Create your views here.
@@ -22,3 +22,9 @@ class AllProductView(ListView):
 class DetailProductView(DetailView):
 	model = Product
 	template_name = 'Catalog/product_info.html'
+
+
+class AllCategoryView(ListView):
+	template_name = 'Catalog/category.html'
+	model = Category
+	context_object_name = 'all_cat'

@@ -1,7 +1,8 @@
 from django.contrib import messages
 from django.contrib.auth import login, authenticate
-from django.shortcuts import render, redirect, HttpResponse
 from django.contrib.auth.forms import AuthenticationForm
+from django.shortcuts import render, HttpResponse
+
 from .forms import NewUserForm
 
 
@@ -17,6 +18,7 @@ def register_request(request):
 	form = NewUserForm()
 	return render(request, template_name="users/home.html", context={"register_form": form})
 
+
 def login_request(request):
 	if request.method == "POST":
 		form = AuthenticationForm(request, data=request.POST)
@@ -29,8 +31,8 @@ def login_request(request):
 				messages.info(request, f"You are now logged in as {username}.")
 				return HttpResponse('Вы вошли')
 			else:
-				messages.error(request,"Invalid username or password.")
+				messages.error(request, "Invalid username or password.")
 		else:
-			messages.error(request,"Invalid username or password.")
+			messages.error(request, "Invalid username or password.")
 	form = AuthenticationForm()
-	return render(request=request, template_name="users/login.html", context={"login_form":form})
+	return render(request=request, template_name="users/login.html", context={"login_form": form})

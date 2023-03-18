@@ -4,5 +4,6 @@
 {% block content %}
 <h2> Название - {{product.name}}</h2>
 <h2> Марка - {{product.mark.name}}</h2>
-<h2> Описание -  {{product.description}}</h2>
+<p> Описание -  {{product.description}}</p>
+<h2>Фото - <img src="/media/{{product.photo}}" alt=""></h2>
 {% endblock %}
