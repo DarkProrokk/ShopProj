@@ -9,7 +9,7 @@
     <li>Цена - {{prod.price}} Количество - {{prod.count}}</li>
     <li>Марка - {{prod.mark.name}}</li>
     <li>Фото - <img src="/media/{{prod.photo}}" alt=""></li>
-    <li>Категория - <a href="{% url 'childcat' prod.category.slug %}">{{prod.category}}</a></li>
+    <li>Категория </li>
     <ul>
         {% for cat in prod.category.all %}
         <li>{{cat}}</li>
