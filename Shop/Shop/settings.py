@@ -81,10 +81,10 @@ WSGI_APPLICATION = 'Shop.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'shop',
-        'USER': 'root',
-        'PASSWORD': '123',
-        'HOST': '127.0.0.1',
+        'NAME': 'Shop_base',
+        'USER': 'darkprorok',
+        'PASSWORD': 'f64xyc8g',
+        'HOST': '10.31.1.20',
         'PORT': '3306',
         'OPTIONS': {
             'init_command': "SET sql_mode='STRICT_TRANS_TABLES'"
