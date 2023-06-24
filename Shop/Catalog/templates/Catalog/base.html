@@ -8,8 +8,13 @@
 </head>
 <body>
 {% block aside %}
-<a href="{% url 'login' %}">Вход</a>
-<a href="{% url 'register' %}">Регистрация</a>
+<ul>
+<li><a href="{% url 'login' %}">Вход</a></li>
+<li><a href="{% url 'register' %}">Регистрация</a></li>
+<li><a href="{% url 'category' %}">Категории</a></li>
+<li><a href="{% url 'catalog' %}">Каталог</a></li>
+<li><a href="{% url 'main_page' %}">Главная страница</a></li>
+    </ul>
 {% endblock %}
 {% block content%} {% endblock %}
 </body>
