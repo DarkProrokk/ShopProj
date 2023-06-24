@@ -1,0 +1,10 @@
+{% extends 'Catalog/base.html' %}
+{% block title %} Каталог {% endblock %}
+
+{% block content %}
+<ol>
+{% for cat in all_cat %}
+<li>{{cat.name}}</li>
+{% endfor %}
+</ol>
+{% endblock %}
