@@ -3,8 +3,12 @@
 
 {% block content %}
 <ol>
-{% for cat in all_cat %}
-<li>{{cat.name}}</li>
+{% for MainCat in mainCat %}
+
+    <li><h2><a href="{% url 'maincat' MainCat.slug %}">{{MainCat}}</a></h2></li>
+    {% for ChildCat in MainCat.category_set.all %}
+    <li><h3><a href="{% url 'childcat' ChildCat.slug %}">{{ChildCat}}</a></h3></li>
+    {% endfor %}
 {% endfor %}
 </ol>
 {% endblock %}

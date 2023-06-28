@@ -3,20 +3,21 @@
 
 {% block content %}
 <ol>
-{% for prod in all_prod %}
+    {% for i in selected %}
+{% for prod in i %}
     <li>Название - {{prod.name}}</li>
     <li>Марка - {{prod.mark}}</li>
     <li>Цена - {{prod.price}} Количество - {{prod.count}}</li>
     <li>Марка - {{prod.mark.name}}</li>
     <li>Фото - <img src="/media/{{prod.photo}}" alt=""></li>
-    <li>Категория - <a href="{% url 'childcat' prod.category.slug %}">{{prod.category}}</a></li>
+    <li>Категория - {{prod.category}} </li>
     <ul>
         {% for cat in prod.category.all %}
         <li>{{cat}}</li>
         {% endfor %}
         </ul>
-    <a href="{% url 'detail' prod.id %}"> Информация о товаре</a>
     <hr>
+    {%endfor%}
 {% endfor %}
 </ol>
 
