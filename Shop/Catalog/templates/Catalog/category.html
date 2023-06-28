@@ -2,13 +2,13 @@
 {% block title %} Каталог {% endblock %}
 
 {% block content %}
-<ol>
+<ul>
 {% for MainCat in mainCat %}
 
     <li><h2><a href="{% url 'maincat' MainCat.slug %}">{{MainCat}}</a></h2></li>
     {% for ChildCat in MainCat.category_set.all %}
-    <li><h3><a href="{% url 'childcat' ChildCat.slug %}">{{ChildCat}}</a></h3></li>
+    <li><h5><a href="{% url 'childcat' ChildCat.slug %}">{{ChildCat}}</a></h5></li>
     {% endfor %}
 {% endfor %}
-</ol>
+</ul>
 {% endblock %}

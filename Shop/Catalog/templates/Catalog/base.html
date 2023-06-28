@@ -8,13 +8,17 @@
 </head>
 <body>
 {% block aside %}
-<ul>
-<li><a href="{% url 'login' %}">Вход</a></li>
-<li><a href="{% url 'register' %}">Регистрация</a></li>
-<li><a href="{% url 'category' %}">Категории</a></li>
-<li><a href="{% url 'catalog' %}">Каталог</a></li>
-<li><a href="{% url 'main_page' %}">Главная страница</a></li>
-<li><a href="http://127.0.0.1:777/admin/login/?next=/admin/">Админка</a></li>
+    <ul>
+        {% if request.user.is_authenticated %}
+        <li><a href="{% url 'logout' %}">Выйти</a></li>
+        {% else %}
+        <li><a href="{% url 'login' %}">Вход</a></li>
+        <li><a href="{% url 'register' %}">Регистрация</a></li>
+        {% endif %}
+        <li><a href="{% url 'category' %}">Категории</a></li>
+        <li><a href="{% url 'catalog' %}">Каталог</a></li>
+        <li><a href="{% url 'main_page' %}">Главная страница</a></li>
+        <li><a href="http://127.0.0.1:777/admin/login/?next=/admin/">Админка</a></li>
     </ul>
 {% endblock %}
 {% block content%} {% endblock %}

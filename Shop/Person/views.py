@@ -1,22 +1,29 @@
 from django.contrib import messages
-from django.contrib.auth import login, authenticate
+from django.contrib.auth import login, authenticate, logout
 from django.contrib.auth.forms import AuthenticationForm
-from django.shortcuts import render, HttpResponse
+from django.shortcuts import render, HttpResponse, redirect
+from django.views.generic import CreateView
+from .forms import CustomUserCreationForm
+from django.urls import reverse_lazy
 
-from .forms import NewUserForm
+
+class SignUpView(CreateView):
+	form_class = CustomUserCreationForm
+	success_url = reverse_lazy('main_page')
+	template_name = 'users/signup.html'
 
 
-def register_request(request):
-	if request.method == "POST":
-		form = NewUserForm(request.POST)
-		if form.is_valid():
-			user = form.save()
-			login(request, user)
-			messages.success(request, "Registration successful.")
-			return HttpResponse('Всё готово')
-		messages.error(request, "Unsuccessful registration. Invalid information.")
-	form = NewUserForm()
-	return render(request, template_name="users/home.html", context={"register_form": form})
+# def register_request(request):
+# 	if request.method == "POST":
+# 		form = CustomUserCreationForm(request.POST)
+# 		if form.is_valid():
+# 			user = form.save()
+# 			login(request, user)
+# 			messages.success(request, "Registration successful.")
+# 			return HttpResponse('Всё готово')
+# 		messages.error(request, "Unsuccessful registration. Invalid information.")
+# 	form = CustomUserCreationForm()
+# 	return render(request, template_name="users/signup.html", context={"register_form": form})
 
 
 def login_request(request):
@@ -29,10 +36,14 @@ def login_request(request):
 			if user is not None:
 				login(request, user)
 				messages.info(request, f"You are now logged in as {username}.")
-				return HttpResponse('Вы вошли')
+				return redirect('/')
 			else:
 				messages.error(request, "Invalid username or password.")
 		else:
 			messages.error(request, "Invalid username or password.")
 	form = AuthenticationForm()
 	return render(request=request, template_name="users/login.html", context={"login_form": form})
+
+def logout_user(request):
+	logout(request)
+	return redirect('login')

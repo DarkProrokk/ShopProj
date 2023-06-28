@@ -2,8 +2,9 @@ from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 
-
 # Create your forms here.
+from Person.models import CustomUser
+
 
 class NewUserForm(UserCreationForm):
 	email = forms.EmailField(required=True)
@@ -17,3 +18,9 @@ class NewUserForm(UserCreationForm):
 		user.email = self.cleaned_data ['email']
 		if commit:
 			user.save()
+
+
+class CustomUserCreationForm(UserCreationForm):
+	class Meta:
+		model = CustomUser
+		fields = ('username', 'fio', 'gender', 'birth_date')

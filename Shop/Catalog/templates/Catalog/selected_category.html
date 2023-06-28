@@ -2,7 +2,7 @@
 {% block title %} Каталог {% endblock %}
 
 {% block content %}
-<ol>
+<ul>
     {% for i in selected %}
 {% for prod in i %}
     <li>Название - {{prod.name}}</li>
@@ -10,7 +10,7 @@
     <li>Цена - {{prod.price}} Количество - {{prod.count}}</li>
     <li>Марка - {{prod.mark.name}}</li>
     <li>Фото - <img src="/media/{{prod.photo}}" alt=""></li>
-    <li>Категория - {{prod.category}} </li>
+    <li>Категория - <a href="{% url 'childcat' prod.category.slug %}">{{prod.category}}</a></li>
     <ul>
         {% for cat in prod.category.all %}
         <li>{{cat}}</li>
@@ -19,6 +19,6 @@
     <hr>
     {%endfor%}
 {% endfor %}
-</ol>
+</ul>
 
 {% endblock %}
