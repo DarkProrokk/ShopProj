@@ -10,6 +10,7 @@
 {% block aside %}
     <ul>
         {% if request.user.is_authenticated %}
+        <li><a href="{% url 'user_page' request.user.slug %}">Страница профиля</a></li>
         <li><a href="{% url 'logout' %}">Выйти</a></li>
         {% else %}
         <li><a href="{% url 'login' %}">Вход</a></li>

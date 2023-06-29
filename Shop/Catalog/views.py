@@ -3,7 +3,7 @@ from django.shortcuts import render
 from django.views.generic import ListView, DetailView
 
 from .models import *
-
+from Cart.models import Cart
 
 # Create your views here.
 def index(request):

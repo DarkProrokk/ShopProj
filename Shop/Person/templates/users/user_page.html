@@ -1,0 +1,28 @@
+{% extends 'Catalog/base.html' %}
+{% block title %} Каталог {% endblock %}
+
+{% block content %}
+<div class="card border-0">
+        <div class="card-body">
+            <div class="row">
+                <div class="col-md-3">
+                    <figure>
+                    </figure>
+                </div>
+                <div class="col-md-9">
+                     <h5 class="card-title">
+                        {{ profile }}
+                    </h5>
+                    <div class="card-text">
+                        <ul>
+                            <li>Никнейм: {{ profile.username }}</li>
+                            {% if profile.fio %} <li>Имя и фамилия: {{ profile.fio }}</li> {% endif %}
+                            <li>Заходил: {{ profile.last_login }}</li>
+                            <li>Дата рождения: {{ profile.birth_date }}</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

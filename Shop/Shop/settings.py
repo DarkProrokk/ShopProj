@@ -40,6 +40,7 @@ INSTALLED_APPS = [
 
 	'Catalog',
 	'Person',
+	'Cart'
 ]
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
@@ -81,7 +82,7 @@ WSGI_APPLICATION = 'Shop.wsgi.application'
 DATABASES = {
 	'default': {
 		'ENGINE': 'django.db.backends.mysql',
-		'NAME': 'shop_main',
+		'NAME': 'shop_main2',
 		'USER': 'root',
 		'PASSWORD': '123',
 		'HOST': '127.0.0.1',
@@ -115,7 +116,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'ru-RU'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Europe/Moscow'
 
 USE_I18N = True
 

@@ -14,7 +14,9 @@ class CustomUserAdmin(UserAdmin):
 				'fields': (
 					'fio',
 					'gender',
-					'birth_date'
+					'birth_date',
+					'slug',
+					'user_cart',
 				)
 			}
 		)
@@ -27,7 +29,9 @@ class CustomUserAdmin(UserAdmin):
 				'fields': (
 					'fio',
 					'gender',
-					'birth_date'
+					'birth_date',
+					'slug',
+					'user_cart'
 				)
 			}
 		)
