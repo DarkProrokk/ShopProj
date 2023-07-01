@@ -39,3 +39,4 @@ class Product(models.Model):
 	mark = models.ForeignKey(Mark, on_delete=models.PROTECT, null=True)
 	description = models.TextField(max_length=200)
 	photo = models.ImageField(upload_to=f'img/', blank=True, null=True)
+

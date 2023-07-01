@@ -1,0 +1,12 @@
+{% extends 'Catalog/base.html' %}
+{% block title %} О продукте {% endblock %}
+
+{% block content %}
+<ol>
+{% for order in cart.order_set.all %}
+
+<li><a href="{% url 'detail' order.product_name.id %}">  {{order.product_name.name}}</a> Кол-во: {{order.product_count}} Цена/шт: {{order.product_price}} Общая стоимость: {% widthratio order.product_count 1 order.product_price %}</li>
+{% endfor %}
+    </ol>
+Общая стоимость товаров в корзине: {{cart.total_price}}
+{% endblock %}

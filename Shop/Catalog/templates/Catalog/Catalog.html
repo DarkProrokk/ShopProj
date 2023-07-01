@@ -2,22 +2,25 @@
 {% block title %} Каталог {% endblock %}
 
 {% block content %}
-<ol>
+<ul>
 {% for prod in all_prod %}
-    <li>Название - {{prod.name}}</li>
+    {% if prod.count > 0 %}
+    <form action="{% url 'add' %}" method="POST">
+        {% csrf_token %}
+        <li><a href="{% url 'detail' prod.id %}">Название - {{prod.name}}</a></li>
     <li>Марка - {{prod.mark}}</li>
     <li>Цена - {{prod.price}} Количество - {{prod.count}}</li>
     <li>Марка - {{prod.mark.name}}</li>
     <li>Фото - <img src="/media/{{prod.photo}}" alt=""></li>
-    <li>Категория </li>
-    <ul>
-        {% for cat in prod.category.all %}
-        <li>{{cat}}</li>
-        {% endfor %}
-        </ul>
-    <a href="{% url 'detail' prod.id %}"> Информация о товаре</a>
+    <li> Категория - <a href="{% url 'childcat' prod.category.slug %}">{{prod.category}}</a></li>
+    <li><a href="{% url 'detail' prod.id %}"> Информация о товаре</a></li>
+        <input name="prod" type="hidden" value="{{prod.pk}}">
+        Введите кол-во<input name="number" type="number" max="{{prod.count}}" value="1"/>
+        <button type="submit" class="btn btn-success">Добавить в корзину</button>
+    </form>
     <hr>
+    {% endif %}
 {% endfor %}
-</ol>
+</ul>
 
 {% endblock %}

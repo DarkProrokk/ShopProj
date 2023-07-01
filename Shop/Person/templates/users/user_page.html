@@ -19,6 +19,7 @@
                             {% if profile.fio %} <li>Имя и фамилия: {{ profile.fio }}</li> {% endif %}
                             <li>Заходил: {{ profile.last_login }}</li>
                             <li>Дата рождения: {{ profile.birth_date }}</li>
+                            Сумма всех заказов в корзине {{profile.user_cart.total_price}} рублей <a href="{% url 'cart' %}">Корзине</a>
                         </ul>
                     </div>
                 </div>

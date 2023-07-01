@@ -1,5 +1,5 @@
 from django.urls import path
-from .views import index, AllProductView, DetailProductView, category, child_cat, main_cat
+from .views import index, AllProductView, DetailProductView, category, child_cat, main_cat, add_prod
 urlpatterns = [
     path('', index, name='main_page'),
     path('catalog_list/', AllProductView.as_view(), name='catalog'),
@@ -7,4 +7,5 @@ urlpatterns = [
     path('category_list/', category, name='category'),
     path('calalog_list/maincat/<slug:slug_category>', child_cat, name='childcat'),
     path('calalog_list/<slug:slug_category>', main_cat, name='maincat'),
+    path('add_product', add_prod, name='add')
 ]
